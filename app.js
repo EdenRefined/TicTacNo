@@ -1,3 +1,10 @@
+var nextPlayer = true;
+
 function play(box) {
-	box.innerHTML = box.id;
+	if(nextPlayer) {
+		box.innerHTML = 'x';
+	} else{
+		box.innerHTML = 'o';
+	}
+	nextPlayer = !nextPlayer;
 }
