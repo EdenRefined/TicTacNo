@@ -14,10 +14,13 @@ function play(box) {
 			box.innerHTML = 'o';
 		}
 		nextPlayer = !nextPlayer;
+		populateBoard();
 	} else {
 		alert('Helloo?? Are you looking? You can\'t do that!')
 	};
-	console.log(boardState);
-
 };
-	
+function populateBoard() {
+	for(var i = 0; i < 9; i++) {
+		document.getElementById(i).innerHTML = boardState[i];
+	};
+};
