@@ -1,17 +1,19 @@
 var nextPlayer = true;
 
 var boardState = [
-	null, null, null,
-	null, null, null,
-	null, null, null
+	[null, null, null],
+	[null, null, null],
+	[null, null, null]
 ];
 
 function play(box) {
-	if(boardState[box.id] == null) {
+	var row = box.getAttribute('row');
+	var column = box.getAttribute('column');
+	if(boardState[row][column] == null) {
 		if(nextPlayer) {
-			box.innerHTML = 'x';
+			boardState[row][column] = 'x';
 		} else{
-			box.innerHTML = 'o';
+			boardState[row][column] = 'o';
 		}
 		nextPlayer = !nextPlayer;
 		populateBoard();
@@ -20,7 +22,11 @@ function play(box) {
 	};
 };
 function populateBoard() {
-	for(var i = 0; i < 9; i++) {
-		document.getElementById(i).innerHTML = boardState[i];
+	var elementID = 0;
+	for(var i = 0; i < 3; i++) {
+		for(var j = 0; j < 3; j++){
+			document.getElementById(elementID).innerHTML = boardState[i][j];
+			elementID++;
+		};
 	};
 };
