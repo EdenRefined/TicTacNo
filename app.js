@@ -7,7 +7,7 @@ var boardState = [
 ];
 
 function play(box) {
-	var row = box.getAttribute('row');
+	var row = box.parentElement.getAttribute('row');
 	var column = box.getAttribute('column');
 	if(boardState[row][column] == null) {
 		if(nextPlayer) {
@@ -22,11 +22,14 @@ function play(box) {
 	};
 };
 function populateBoard() {
-	var elementID = 0;
+	var board = document.getElementById('ticTacBoard').children[0].children;
+	var row;
+	var column;
 	for(var i = 0; i < 3; i++) {
+		row = board[i].children;
 		for(var j = 0; j < 3; j++){
-			document.getElementById(elementID).innerHTML = boardState[i][j];
-			elementID++;
+			column = row[j];
+			column.innerHTML = boardState[i][j];
 		};
 	};
 };
