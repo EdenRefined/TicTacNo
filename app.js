@@ -6,7 +6,12 @@ var boardState = [
 	[null, null, null]
 ];
 
-function play(box) {
+function play(box){
+	updateData(box);
+	populateBoard();
+};
+
+function updateData(box) {
 	var row = box.parentElement.getAttribute('row');
 	var column = box.getAttribute('column');
 	if(boardState[row][column] == null) {
@@ -16,7 +21,6 @@ function play(box) {
 			boardState[row][column] = 'o';
 		}
 		nextPlayer = !nextPlayer;
-		populateBoard();
 	} else {
 		alert('Helloo?? Are you looking? You can\'t do that!')
 	};
