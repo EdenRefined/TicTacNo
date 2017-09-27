@@ -1,17 +1,11 @@
-var ticTappToe ={
-	
-	nextPlayer: {state: true},
+var model = { 
+	nextPlayer: true,
 
 	boardState: [
 		[null, null, null],
 		[null, null, null],
 		[null, null, null]
 	],
-
-	play: function(box){
-		this.updateData(box, this.boardState, this.nextPlayer);
-		this.populateBoard(this.boardState);
-	},
 
 	updateData: function(box, boardNow, playerNow) {
 		var row = box.parentElement.getAttribute('row');
@@ -22,11 +16,14 @@ var ticTappToe ={
 			} else{
 				boardNow[row][column] = 'o';
 			}
-				playerNow.state = !(playerNow.state);
+				playerNow = !(playerNow);
 		} else {
 			alert('Helloo?? Are you looking? You can\'t do that!')
 		};
-	},
+	}
+};
+
+var view ={ 
 	populateBoard: function(boardNow) {
 		var board = document.getElementById('ticTacBoard').children[0].children;
 		var row;
@@ -39,4 +36,11 @@ var ticTappToe ={
 			};
 		};
 	}
+};
+
+var controller = {
+	play: function(box){
+		model.updateData(box, model.boardState, model.nextPlayer);
+		view.populateBoard(model.boardState);
+	},
 };
