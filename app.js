@@ -1,3 +1,13 @@
+var controller = {
+	model: {},
+	view: {},
+	play: function(box){
+		model.updateData(box);
+		var boardNow = model.readBoardState;
+		this.view.populateBoard(boardNow);
+	},
+};
+
 var model = { 
 	nextPlayer: true,
 
@@ -7,7 +17,9 @@ var model = {
 		[null, null, null]
 	],
 
-	updateData: function(box, row, column) {
+	updateData: function(box) {
+		var row = box.parentElement.getAttribute('row');
+		var column = box.getAttribute('column');
 		if(this.boardState[row][column] == null) {
 			if(this.playerState) {
 				this.boardState[row][column] = 'x';
@@ -42,12 +54,3 @@ var view ={
 	}
 };
 
-var controller = {
-	play: function(box){
-		var row = box.parentElement.getAttribute('row');
-		var column = box.getAttribute('column');
-		model.updateData(box, row, column);
-		var boardNow = model.updateData(box);
-		view.populateBoard(boardNow);
-	},
-};
