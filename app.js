@@ -1,15 +1,26 @@
+function initializeApp() {
+	controller.setModel(model);
+	controller.setView(view);
+};
+
 var controller = {
 	model: {},
 	view: {},
+	setModel: fuction(newModel){
+		this.model = newModel;
+	},
+	setView: function(newView){
+		this.view = newView;
+	},
 	play: function(box){
 		model.updateData(box);
 		var boardNow = model.readBoardState;
 		this.view.populateBoard(boardNow);
-	},
+	}
 };
 
 var model = { 
-	nextPlayer: true,
+	playerState: true,
 
 	boardState: [
 		[null, null, null],
