@@ -6,7 +6,7 @@ function initializeApp() {
 var controller = {
 	model: {},
 	view: {},
-	setModel: fuction(newModel){
+	setModel: function(newModel) {
 		this.model = newModel;
 	},
 	setView: function(newView){
