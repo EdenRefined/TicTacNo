@@ -1,15 +1,21 @@
 var controller = {
 	model: {},
 	view: {},
-	setModel: function(newModel) {
-		this.model = newModel;
+	addModel: function(newModel) {
+		this.models[newModel.name] = newModel;
 	},
 	setView: function(newView){
 		this.view = newView;
 	},
 	play: function(box){
-		model.updateData(box);
-		var boardNow = model.readBoardState;
-		this.view.populateBoard(boardNow);
+        var nowPlayer = this.models.playerModel.readData();
+        var dbError = this.models.boardModel.updateData(box, nowPlayer);
+        if (dbError) {
+            var boardNow = this.models.boardModel.readBoardState();
+            this.view.populateBoard(boardNow);
+            this.models.playerModel.toggleNextPlayer();
+        } else {
+            alert('Hello?!?! Are you paying attention? You can\'t go there!');
+        };
 	}
 };

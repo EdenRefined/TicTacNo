@@ -1,4 +1,5 @@
 function initializeApp() {
-	controller.setModel(model);
+	controller.addModel(boardModel);
+	controller.addModel(playerModel);
 	controller.setView(view);
 };
