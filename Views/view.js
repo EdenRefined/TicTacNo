@@ -1,5 +1,5 @@
-var view ={ 
-	function popluateBoard(boardNow) {
+var gameplayView ={ 
+	repopulateBoard: function (boardState) {
 		var board = document.getElementById('ticTacBoard').children[0].children;
 		var row;
 		var column;
