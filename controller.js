@@ -11,7 +11,7 @@ var controller = {
         var nowPlayer = this.models.playerModel.readData();
         var dbError = this.models.boardModel.updateData(box, nowPlayer);
         if (dbError) {
-            var boardNow = this.models.boardModel.readBoardState();
+            var boardNow = model.readBoardState();
             this.view.populateBoard(boardNow);
             this.models.playerModel.toggleNextPlayer();
         } else {
