@@ -34,6 +34,6 @@ function initializeApp() {
 	playerModel.setPlayerState(firstPlayer);
 	controller.addModel(boardModel);
 	controller.addModel(playerModel);
-	controller.setView(gameplayViewBrowser);
+	controller.setView(view);
 	initializeView.buildBoard();
 };
